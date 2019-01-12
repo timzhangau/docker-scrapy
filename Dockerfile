@@ -7,6 +7,7 @@ ENV TERM linux
 
 # Scrapy Project ENV
 ARG SCRAPY_VERSION=1.5
+ARG PYTHON_DEPS="botocore"
 ARG APP_HOME=/app
 
 # install build dependencies and python packages
@@ -35,6 +36,7 @@ locales \
 && useradd -ms /bin/bash -d ${APP_HOME} spider \
 && pip install -U pip setuptools wheel \
 && pip install scrapy==${SCRAPY_VERSION} \
+&& if [ -n "${PYTHON_DEPS}" ]; then pip install ${PYTHON_DEPS}; fi \
 && apt-get purge --auto-remove -yqq $buildDeps \
 && apt-get autoremove -yqq --purge \
 && apt-get clean \
