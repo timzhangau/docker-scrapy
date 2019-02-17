@@ -7,7 +7,7 @@ ENV TERM linux
 
 # Scrapy Project ENV
 ARG SCRAPY_VERSION=1.5
-ARG PYTHON_DEPS="botocore"
+ARG PYTHON_DEPS="botocore pytz langcodes"
 ARG APP_HOME=/app
 
 # install build dependencies and python packages
